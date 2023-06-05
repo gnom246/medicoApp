@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>medico</title>
+</head>
+<body>
+<h1>MEDICO</h1>
+
+
+
+<!--    <h2><a th:href="@{/for-user/{user}/visits(user=${userId})}" th:text="${spec.name}"></a></h2>-->
+<p>Wybierz specializację</p>
+
+<form th:action="@{/for-user/{user}/visits(user=${userId})}" th:method="post">
+    <select name="specialist">
+        <option th:each="spec : ${specList}" th:value=${spec.name} th:text="${spec.name}">
+        </option>
+        <input type="submit" value="wybierz">
+    </select>
+</form>
+<br>
+
+
+<h4>Zarezerwój wizytę:</h4>
+
+<div th:each="visit : ${visitsList}">
+    <div th:text="${visit.day}"></div>
+    <div th:text="${visit.hour}"></div>
+    <div th:text="${visit.doctorName}"></div>
+    <form th:action="@{/for-user/{user}/visits/{spec}/{visitId}(user=${userId}, spec=${specialist}, visitId=${visit.id})}" th:method="post">
+        <input type="submit" value="zapisz">
+    </form><br>
+    <!--    <p><a th:href="@{/for-user/{user}/visits/{spec}/{visitId}(user=${userId}, spec=${specialis}, visitId=${visit.id})}"-->
+    <!--           th:text="${visit.day}+ ${visit.hour}+ ${visit.doctorName}"></a></p><br>-->
+
+</div>
+
+</body>
+</html>
+

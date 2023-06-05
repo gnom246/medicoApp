@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>medico</title>
+</head>
+<body>
+<h1>MEDICO</h1>
+
+
+
+<p>Wybierz specializację</p>
+
+<form th:action="@{/for-user/{user}/visits(user=${userId})}" th:method="post">
+    <select name="specialist">
+        <option th:each="spec : ${specList}" th:value=${spec.name} th:text="${spec.name}">
+        </option>
+        <input type="submit" value="wybierz">
+    </select>
+</form>
+<br>
+
+
+</body>
+</html>
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>medico</title>
+</head>
+<body>
+<h1>MEDICO</h1>
+<!--<h4><div th:if="${ifLogged}">-->
+<!--    Witaj <span th:text="${loggedUser.userName}"></span>-->
+
+<!--</div></h4>-->
+<h4>Twoje badania:</h4>
+
+<div th:each="test : ${tests}">
+
+    <h2><a th:href="@{/for-user/{user}/tests/{testId}(user=${userId}, testId=${test.testId})}" th:text="${test.testName}"></a></h2>
+    <div th:text="${#temporals.format(test.testDate, 'yyyy-MM-dd')}"></div>
+</div>
+
+<br><br><br>
+
+</body>
+</html>

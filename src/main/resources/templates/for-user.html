@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>medico</title>
+</head>
+<body>
+<h1>MEDICO</h1>
+<h4><div th:if="${ifLogged}">
+    Witaj <span th:text="${loggedUser.userName}"></span>
+
+</div></h4>
+<p>Zarezerwowane wizyty:</p>
+<div th:each="userVisit : ${userVisits}">
+    <div th:text="${userVisit.day}+ ${userVisit.hour}+ ${userVisit.doctorName}"></div>
+</div><br><br>
+
+
+<!--Jestes zalogowany jako <span th:authentication="name" /> z rola <span th:authentication="authorities" />-->
+<a th:href="@{/for-user/{userId}/tests(userId=${loggedUser.id})}">Zobacz wyniki swoich badań</a>
+<br><br>
+<a th:href="@{/for-user/{userId}/visits(userId=${loggedUser.id})}">Umów wizytę</a>
+</body>
+</html>
+

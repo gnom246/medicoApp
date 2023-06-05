@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>medico</title>
+</head>
+<body>
+<h1>MEDICO</h1>
+<!--<h4><div th:if="${ifLogged}">-->
+<!--    Witaj <span th:text="${loggedUser.userName}"></span>-->
+
+<!--</div></h4>-->
+<h4>Szczegóły badania:</h4>
+
+<div>
+
+    <h2><a th:text="${testDesc.testName}"></a></h2>
+    <div th:text="${#temporals.format(testDesc.testDate, 'yyyy-MM-dd')}"></div>
+    <div th:text="${testDesc.testDescription}"></div>
+</div>
+
+<br><br><br>
+
+</body>
+</html>
+
